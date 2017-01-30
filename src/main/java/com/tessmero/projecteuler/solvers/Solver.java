@@ -10,8 +10,13 @@ import java.util.Map;
  */
 public abstract class Solver {
   
-  private Map<String,File> fetchOnlineResources() {
-    return null;
+  /**
+   * For convenient one-off testing of new solver implementations.
+   * @param args ignored
+   */
+  public static void main(String[] args) {
+    Solver instance = new Solver2();
+    System.out.println( instance.doSolution() );
   }
   
   /**
