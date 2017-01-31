@@ -23,9 +23,8 @@ public class SolverTest {
   private static final Logger logger = getLogger(SolverTest.class);
   
   /**
-   * For all Solver implementations: create an instance, call 
-   * {@link Solver#doTest}, and assert that the return value
-   * matches {@link Solver#getExpectedTestResult}.
+   * For all Solver implementations: create an instance, call {@link Solver#doTest}, 
+   * and assert that the return value matches {@link Solver#getExpectedTestResult}.
    */
   @Test
   public void testAllSolvers() throws Exception {

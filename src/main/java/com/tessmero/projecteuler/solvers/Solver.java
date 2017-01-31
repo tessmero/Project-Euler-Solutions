@@ -15,7 +15,7 @@ public abstract class Solver {
    * @param args ignored
    */
   public static void main(String[] args) {
-    Solver instance = new Solver2();
+    Solver instance = new Solver4();
     System.out.println( instance.doSolution() );
   }
   
