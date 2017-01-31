@@ -1,7 +1,8 @@
 package com.tessmero.projecteuler.solvers;
 
-import static java.lang.Long.max;
-import static java.lang.Math.sqrt;
+import static com.tessmero.projecteuler.util.Primes.getPrimeFactors;
+
+import java.util.List;
 
 /**
  * What is the largest prime factor of the number 600851475143.
@@ -24,27 +25,9 @@ public class Solver3 extends Solver {
   public long getExpectedTestResult() {
     return 29;
   }
- 
-  private long getLargestPrimeFactor( long num ) {
-    if ( isPrime( num ) ) {
-      return num;
-    }
-    long maxFactor = (long)sqrt( num ) + 1;
-    for ( long i = 2 ; i < maxFactor ; i++ ) {
-      if ( num % i == 0 && isPrime( i ) ) {
-        return max( i, getLargestPrimeFactor( num / i ) );
-      }
-    }
-    return -1;
-  }
   
-  private boolean isPrime( long num ) {
-    long maxFactor = (long)sqrt( num );
-    for ( long i = 2 ; i < maxFactor ; i++ ) {
-      if ( num % i == 0 ) {
-        return false;
-      }
-    }
-    return true;
+  private long getLargestPrimeFactor( long num ) {
+    List<Long> allPrimeFactors = getPrimeFactors( num );
+    return allPrimeFactors.stream().max(Long::compareTo).get();
   }
 }

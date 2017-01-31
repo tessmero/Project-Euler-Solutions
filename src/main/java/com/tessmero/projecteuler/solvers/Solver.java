@@ -1,8 +1,5 @@
 package com.tessmero.projecteuler.solvers;
 
-import java.io.File;
-import java.util.Map;
-
 /**
  * Abstract class that all problem solutions should inherit from.
  * 
@@ -15,7 +12,7 @@ public abstract class Solver {
    * @param args ignored
    */
   public static void main(String[] args) {
-    Solver instance = new Solver6();
+    Solver instance = new Solver9();
     System.out.println( instance.doSolution() );
   }
   
