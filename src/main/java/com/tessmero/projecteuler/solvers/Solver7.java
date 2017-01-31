@@ -1,6 +1,6 @@
 package com.tessmero.projecteuler.solvers;
 
-import static com.tessmero.projecteuler.util.Primes.getPrimes;
+import static com.tessmero.projecteuler.util.Primes.getNPrimes;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class Solver7 extends Solver {
   }
   
   private long getNthPrimeNumber( int count ) {
-    List<Long> primes = getPrimes( count );
+    List<Long> primes = getNPrimes( count );
     return primes.get( count - 1 );
   }
 }

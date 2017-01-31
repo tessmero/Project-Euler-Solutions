@@ -1,6 +1,10 @@
 package com.tessmero.projecteuler.util;
 
 import static java.lang.Math.sqrt;
+import static java.text.MessageFormat.format;
+import static org.slf4j.LoggerFactory.getLogger;
+
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +15,34 @@ import java.util.List;
  * @author Oliver
  */
 public class Primes {
+  private static final Logger logger = getLogger(Primes.class);
+  
+  /**
+   * Compute a list of the primes below a certain value.
+   * 
+   * @param ceiling the exclusive upper limit for primes to retrieve
+   * @return a list of all primes less than ceiling
+   */
+  public static List<Long> getPrimes( long ceiling ) {
+    List<Long> result = new ArrayList();
+    
+    result.add( 2L );
+    for ( long test = 3 ; test < ceiling ; test += 2 ) {
+      logger.debug( format( "testing {0} for primality...", test ) );
+      boolean isPrime = true;
+      for (long lowerPrime : result) {
+        if (test % lowerPrime == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      if ( isPrime ) {
+        result.add( test );
+      }
+    }
+    
+    return result;
+  }
   
   /**
    * Compute a list of the first n primes.
@@ -18,7 +50,7 @@ public class Primes {
    * @param count the desired number of primes
    * @return a list of primes with length = count
    */
-  public static List<Long> getPrimes( int count ) {
+  public static List<Long> getNPrimes( int count ) {
     List<Long> result = new ArrayList();
     
     if ( count == 0 ) {
