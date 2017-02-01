@@ -1,7 +1,9 @@
 package com.tessmero.projecteuler.solvers;
 
-import static java.lang.Long.max;
 import static java.text.MessageFormat.format;
+import static org.slf4j.LoggerFactory.getLogger;
+
+import org.slf4j.Logger;
 
 import java.util.Arrays;
 
@@ -12,6 +14,7 @@ import java.util.Arrays;
  * @author Oliver
  */
 public class Solver11 extends Solver {
+  private static final Logger logger = getLogger(Solver11.class);
   
   private static final long[][] gridValues = parseGridValues(
       "  08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08\n" 
@@ -37,26 +40,44 @@ public class Solver11 extends Solver {
   
   @Override
   public long doSolution() {
+    long[] factors;
     long product;
-    long result = 0;
+    
+    long maxProduct = 0;
+    int[] maxPosition = null;
+    Direction maxDirection = null;
+    long[] maxFactors = null;
+    
     for (int col = 0 ; col < 20 ; col++ ) {
       for ( int row = 0 ; row < 20 ; row++ ) {
         for ( Direction dir : Direction.values() ) {
           try {
-            product = getProduct( col, row, dir );
+            factors = getFactors( col, row, dir );
           } catch ( Exception e ) {
             continue;
           }
-          result = max( result, product );
+          product = getProduct( factors );
+          
+          if ( product > maxProduct ) {
+            maxProduct = product;
+            maxFactors = factors;
+            maxPosition = new int[]{ col, row };
+            maxDirection = dir;
+          }
         }
       }
     }
-    return result;
+    
+    logger.info( format( String.join( "\n\t", "found Problem 11 solution:",
+            "position: {0}","direction: {1}","factors: {2}", "product: {3}" ),
+            Arrays.toString(maxPosition), maxDirection, Arrays.toString(maxFactors), maxProduct ));
+    
+    return maxProduct;
   }
 
   @Override
   public long doTest() throws Exception {
-    return getProduct( 8, 6, Direction.Diagonal );
+    return getProduct( getFactors( 8, 6, Direction.Diagonal ) );
   }
 
   @Override
@@ -64,28 +85,37 @@ public class Solver11 extends Solver {
     return 1788696;
   }
   
-  private long getProduct( int col, int row, Direction dir ) throws Exception {
-    long result;
+  private long[] getFactors( int col, int row, Direction dir ) throws Exception {
+    
+    long[] result = new long[4];
     try {
-      result = gridValues[row][col];
+      result[0] = gridValues[row][col];
     } catch ( ArrayIndexOutOfBoundsException e ) {
       throw new StartingPositionOutOfBoundsException( col, row );
     }
     
-    for ( int i = 0 ; i < 3 ; i++ ) {
+    for ( int i = 1 ; i < 4 ; i++ ) {
       if ( dir == Direction.Vertical || dir == Direction.Diagonal ) {
-        col++;
-      }
-      if ( dir == Direction.Horizontal || dir == Direction.Diagonal ) {
         row++;
       }
+      if ( dir == Direction.Horizontal || dir == Direction.Diagonal ) {
+        col++;
+      }
       try {
-        result *= gridValues[row][col];
+        result[i] = gridValues[row][col];
       } catch ( ArrayIndexOutOfBoundsException e ) {
         throw new DirectedPositionOutOfBoundsException( col, row );
       }
     }
     
+    return result;
+  }
+  
+  private long getProduct( long[] factors ) {
+    long result = 1;
+    for (long fct : factors) {
+      result *= fct;
+    }
     return result;
   }
   
