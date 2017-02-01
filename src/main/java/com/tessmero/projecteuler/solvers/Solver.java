@@ -11,8 +11,8 @@ public abstract class Solver {
    * For convenient one-off testing of new solver implementations.
    * @param args ignored
    */
-  public static void main(String[] args) {
-    Solver instance = new Solver10();
+  public static void main(String[] args) throws Exception {
+    Solver instance = new Solver11();
     System.out.println( instance.doSolution() );
   }
   
@@ -21,7 +21,7 @@ public abstract class Solver {
    * 
    * @return the solution, which can be verified at ProjectEuler.org
    */
-  public abstract long doSolution();
+  public abstract long doSolution() throws Exception;
   
   /**
    * Run a shorter version of the solution, used to confirm that the implementation still works.
@@ -31,7 +31,7 @@ public abstract class Solver {
    * 
    * @return a computed result matching {@link #getExpectedTestResult()}
    */
-  public abstract long doTest();
+  public abstract long doTest() throws Exception;
   
   /**
    * Provides the implementation's expected result from {@link #doTest()}.
