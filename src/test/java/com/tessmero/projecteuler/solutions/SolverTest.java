@@ -31,12 +31,22 @@ public class SolverTest {
     System.out.println("doTest");
     for ( Solver instance : getAllSolverImplementations() ) {
       
-      logger.info( "testing " + instance.getClass().getSimpleName() );
+      //log pre-test message
+      String solverShortName = instance.getClass().getSimpleName();
+      logger.info( format( "testing {0}...", solverShortName ) );
       
+      //do the test
       long expResult = instance.getExpectedTestResult();
       long result = instance.doTest();
       assertEquals( "unexpected test result from " + instance.getClass().getSimpleName(), 
               expResult, result);
+      
+      //log post-test mesasge
+      String problemUrl = "https://projecteuler.net/problem=" 
+              + solverShortName.replace( "Solver", "" );
+      logger.info( format( 
+              "got expected test result ({0}) from {1}, matching problem description at {2}",
+              result, solverShortName, problemUrl ) );
     }
   }
   
