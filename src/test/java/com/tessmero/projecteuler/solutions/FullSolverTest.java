@@ -30,7 +30,7 @@ import java.util.Map;
  *
  * @author Oliver
  */
-@Ignore("slow, requires internet connection")
+//@Ignore("slow, requires internet connection")
 public class FullSolverTest {
   private static final Logger logger = getLogger(FullSolverTest.class);
 
