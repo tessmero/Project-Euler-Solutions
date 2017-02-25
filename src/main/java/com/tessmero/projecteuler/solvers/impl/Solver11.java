@@ -1,7 +1,7 @@
 package com.tessmero.projecteuler.solvers.impl;
 
 import static java.util.Arrays.stream;
-import static java.util.stream.IntStream.range;
+import static java.util.stream.LongStream.range;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
@@ -18,7 +18,7 @@ import java.util.stream.LongStream;
 public class Solver11 extends LongSolver {
   private static final Logger logger = getLogger(Solver11.class);
   
-  private static final int[][] gridValues = {
+  private static final long[][] gridValues = {
     {  8,  2, 22, 97, 38, 15,  0, 40,  0, 75,  4,  5,  7, 78, 52, 12, 50, 77, 91,  8 }, 
     { 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48,  4, 56, 62,  0 }, 
     { 81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30,  3, 49, 13, 36, 65 }, 
@@ -45,7 +45,7 @@ public class Solver11 extends LongSolver {
   private static final int Horizontal = 1;
   private static final int Diagonal = 2;
   private static final int BackDiagonal = 3;
-  private static final int[] Directions = { Vertical, Horizontal, Diagonal, BackDiagonal };
+  private static final long[] Directions = { Vertical, Horizontal, Diagonal, BackDiagonal };
   
   @Override
   public long doSolution() {
@@ -53,13 +53,13 @@ public class Solver11 extends LongSolver {
     long maxProduct = 
         
         //for each column in the grid
-        range( 0, 20 ).boxed().flatMap( col -> 
+        range( 0, 20 ).flatMap( col -> 
                 
           //for each row in the grid
-          range( 0, 20 ).boxed().flatMap( row -> 
+          range( 0, 20 ).flatMap( row -> 
               
             //for each possible direction
-            stream( Directions ).boxed().map( dir -> 
+            stream( Directions ).map( dir -> 
                     
               //using the given col/row as a starting point and extending in the given direction
               //collect 4 integers from the grid and mutiply them together
@@ -68,7 +68,7 @@ public class Solver11 extends LongSolver {
           ) 
         )     
         //track the maximum value from the stream above
-        .max( Long::compare ).get();
+        .max().getAsLong();
     
     return maxProduct;
   }
@@ -83,15 +83,15 @@ public class Solver11 extends LongSolver {
     return 1788696;
   }
   
-  private long getProduct( int col, int row, int dir ) {
+  private long getProduct( long col, long row, long dir ) {
     return getNumbersFromGrid( col, row, dir ).reduce( 1, (left,right) -> left * right );
   }
   
-  private LongStream getNumbersFromGrid( int col, int row, int dir ) {
+  private LongStream getNumbersFromGrid( long col, long row, long dir ) {
     
     long[] result = new long[4];
     try {
-      result[0] = gridValues[row][col];
+      result[0] = gridValues[(int)row][(int)col];
     } catch ( ArrayIndexOutOfBoundsException e ) {
       return stream( new long[]{ -1 } );
     }
@@ -107,7 +107,7 @@ public class Solver11 extends LongSolver {
         col--;
       }
       try {
-        result[i] = gridValues[row][col];
+        result[i] = gridValues[(int)row][(int)col];
       } catch ( ArrayIndexOutOfBoundsException e ) {
         return stream( new long[]{ -1 } );
       }
