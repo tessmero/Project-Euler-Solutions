@@ -1,6 +1,8 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
 
 import static java.lang.Math.abs;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * Find the difference between the sum of the squares of the first one hundred natural numbers and 
@@ -8,7 +10,7 @@ import static java.lang.Math.abs;
  * 
  * @author Oliver
  */
-public class Solver6 extends Solver{
+public class Solver6 extends LongSolver{
 
   @Override
   public long doSolution() {

@@ -1,6 +1,8 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
 
 import static com.tessmero.projecteuler.util.Primes.getNPrimes;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 import java.util.List;
 
@@ -9,7 +11,7 @@ import java.util.List;
  * 
  * @author Oliver
  */
-public class Solver7 extends Solver {
+public class Solver7 extends LongSolver {
 
   @Override
   public long doSolution() {

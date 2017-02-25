@@ -28,7 +28,7 @@ public class Primes {
     
     result.add( 2L );
     for ( long test = 3 ; test < ceiling ; test += 2 ) {
-      logger.debug( format( "testing {0} for primality...", test ) );
+      logger.info( format( "testing {0} for primality...", test ) );
       boolean isPrime = true;
       for (long lowerPrime : result) {
         if (test % lowerPrime == 0) {

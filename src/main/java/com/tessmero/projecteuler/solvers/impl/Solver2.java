@@ -1,5 +1,6 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
 
+import com.tessmero.projecteuler.solvers.LongSolver;
 import com.tessmero.projecteuler.util.Fibonacci;
 
 /**
@@ -8,7 +9,7 @@ import com.tessmero.projecteuler.util.Fibonacci;
  * 
  * @author Oliver
  */
-public class Solver2 extends Solver{
+public class Solver2 extends LongSolver{
 
   @Override
   public long doSolution() {

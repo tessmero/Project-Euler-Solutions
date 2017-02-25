@@ -1,11 +1,13 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20.
  * 
  * @author Oliver
  */
-public class Solver5 extends Solver{
+public class Solver5 extends LongSolver{
 
   @Override
   public long doSolution() {

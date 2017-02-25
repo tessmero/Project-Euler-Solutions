@@ -1,11 +1,16 @@
 package com.tessmero.projecteuler.solvers;
 
+import com.tessmero.projecteuler.solvers.impl.Solver11;
+
 /**
- * Abstract class that all problem-solutions should inherit from.
+ * Interface that all problem-solvers inherit from.
+ * 
+ * <p>Implementations generally should not implement Solver directly, but rather extend 
+ * {@link com.tessmero.projecteuler.solvers.LongSolver}.
  * 
  * @author Oliver
  */
-public abstract class Solver {
+public interface Solver {
   
   /**
    * For convenient one-off testing of new solver implementations.
@@ -13,7 +18,7 @@ public abstract class Solver {
    */
   public static void main(String[] args) throws Exception {
     Solver instance = new Solver11();
-    System.out.println( instance.doSolution() );
+    System.out.println( instance.doSolutionStr() );
   }
   
   /**
@@ -21,25 +26,25 @@ public abstract class Solver {
    * 
    * @return the solution, which can be verified at ProjectEuler.org
    */
-  public abstract long doSolution() throws Exception;
+  public abstract String doSolutionStr() throws Exception;
   
   /**
    * Run a shorter version of the solution, used to confirm that the implementation still works.
    * 
-   * <p>When applicable, this will return the example result listed in the online problem 
+   * <p>When applicable, this will return the example solution given in the online problem 
    * description
    * 
    * @return a computed result matching {@link #getExpectedTestResult()}
    */
-  public abstract long doTest() throws Exception;
+  public abstract String doTestStr() throws Exception;
   
   /**
    * Provides the implementation's expected result from {@link #doTest()}.
    * 
-   * <p>When applicable, this will match the example result listed in the online problem 
+   * <p>When applicable, this will be the example solution listed in the online problem 
    * description
    * 
    * @return a hard-coded expected test result
    */
-  public abstract long getExpectedTestResult();
+  public abstract String getExpectedTestResultStr();
 }

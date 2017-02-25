@@ -1,13 +1,15 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
 
 import static com.tessmero.projecteuler.util.Primes.getPrimes;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * Find the sum of all the primes below two million.
  * 
  * @author Oliver
  */
-public class Solver10 extends Solver{
+public class Solver10 extends LongSolver{
 
   @Override
   public long doSolution() {

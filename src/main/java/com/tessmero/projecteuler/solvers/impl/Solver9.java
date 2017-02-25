@@ -1,4 +1,6 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * There exists exactly one Pythagorean triplet for which a + b + c = 1000.
@@ -6,7 +8,7 @@ package com.tessmero.projecteuler.solvers;
  * 
  * @author Oliver
  */
-public class Solver9 extends Solver{
+public class Solver9 extends LongSolver{
 
   @Override
   public long doSolution() {

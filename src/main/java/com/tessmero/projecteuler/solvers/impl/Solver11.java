@@ -1,8 +1,9 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
 
 import static java.text.MessageFormat.format;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import com.tessmero.projecteuler.solvers.LongSolver;
 import org.slf4j.Logger;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import java.util.Arrays;
  * 
  * @author Oliver
  */
-public class Solver11 extends Solver {
+public class Solver11 extends LongSolver {
   private static final Logger logger = getLogger(Solver11.class);
   
   private static final long[][] gridValues = parseGridValues(

@@ -1,11 +1,13 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * Find the largest palindrome made from the product of two 3-digit numbers.
  * 
  * @author Oliver
  */
-public class Solver4 extends Solver{
+public class Solver4 extends LongSolver{
 
   @Override
   public long doSolution() {
@@ -26,17 +28,18 @@ public class Solver4 extends Solver{
     long factorA;
     long factorB;
     long product;
+    long result = 0;
     
     for ( factorA = maxFactor ; factorA >= minFactor ; factorA-- ) {
       for ( factorB = factorA ; factorB >= minFactor ; factorB-- ) {
         product = factorA * factorB;
-        if ( isPalindrome( product ) ) {
-          return product;
+        if ( isPalindrome( product ) && product > result ) {
+          result = product;
         }
       }
     }
     
-    return -1;
+    return result;
   }
   
   private boolean isPalindrome( long number ) {

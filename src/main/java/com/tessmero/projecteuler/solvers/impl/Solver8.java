@@ -1,4 +1,6 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. 
@@ -6,7 +8,7 @@ package com.tessmero.projecteuler.solvers;
  * 
  * @author Oliver
  */
-public class Solver8 extends Solver {
+public class Solver8 extends LongSolver {
 
   private static final String thousandDigits = 
       "73167176531330624919225119674426574742355349194934" 

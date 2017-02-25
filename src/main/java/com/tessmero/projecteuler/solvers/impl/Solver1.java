@@ -1,15 +1,17 @@
-package com.tessmero.projecteuler.solvers;
+package com.tessmero.projecteuler.solvers.impl;
+
+import com.tessmero.projecteuler.solvers.LongSolver;
 
 /**
  * Find the sum of all the multiples of 3 or 5 below 1000.
  * 
  * @author Oliver
  */
-public class Solver1 extends Solver {
+public class Solver1 extends LongSolver {
 
   @Override
   public long doSolution() {
-    return getSumOfMultiples( 100 );
+    return getSumOfMultiples( 1000 );
   }
 
   @Override
