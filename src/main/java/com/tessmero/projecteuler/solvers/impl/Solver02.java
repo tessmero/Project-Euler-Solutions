@@ -9,7 +9,7 @@ import com.tessmero.projecteuler.util.Fibonacci;
  * 
  * @author Oliver
  */
-public class Solver2 extends LongSolver{
+public class Solver02 extends LongSolver{
 
   @Override
   public long doSolution() {

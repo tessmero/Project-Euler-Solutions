@@ -6,17 +6,11 @@
 
 package com.tessmero.projecteuler.solvers.impl;
 
-import static com.tessmero.projecteuler.util.Primes.getPrimeFactors;
-import static java.text.MessageFormat.format;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
-import com.tessmero.projecteuler.util.Primes.PrimeSupplier;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.LongSupplier;
 import java.util.stream.LongStream;
 

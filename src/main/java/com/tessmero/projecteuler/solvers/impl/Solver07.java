@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * @author Oliver
  */
-public class Solver7 extends LongSolver {
+public class Solver07 extends LongSolver {
 
   @Override
   public long doSolution() {

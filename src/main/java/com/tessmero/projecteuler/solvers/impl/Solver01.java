@@ -7,7 +7,7 @@ import com.tessmero.projecteuler.solvers.LongSolver;
  * 
  * @author Oliver
  */
-public class Solver1 extends LongSolver {
+public class Solver01 extends LongSolver {
 
   @Override
   public long doSolution() {

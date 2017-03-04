@@ -8,7 +8,7 @@ import com.tessmero.projecteuler.solvers.LongSolver;
  * 
  * @author Oliver
  */
-public class Solver8 extends LongSolver {
+public class Solver08 extends LongSolver {
 
   private static final String thousandDigits = 
       "73167176531330624919225119674426574742355349194934" 
