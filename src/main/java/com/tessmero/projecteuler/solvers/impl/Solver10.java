@@ -1,8 +1,8 @@
 package com.tessmero.projecteuler.solvers.impl;
 
-import static com.tessmero.projecteuler.util.Primes.getPrimes;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
+import com.tessmero.projecteuler.util.Primes.PrimeSupplier;
 
 /**
  * Find the sum of all the primes below two million.
@@ -13,12 +13,12 @@ public class Solver10 extends LongSolver{
 
   @Override
   public long doSolution() {
-    return getPrimes( 2000000 ).stream().mapToLong(Long::longValue).sum();
+    return getSumOfPrimes( 2000000L );
   }
 
   @Override
   public long doTest() {
-    return getPrimes( 10 ).stream().mapToLong(Long::longValue).sum();
+    return getSumOfPrimes( 10 );
   }
 
   @Override
@@ -26,4 +26,13 @@ public class Solver10 extends LongSolver{
     return 17;
   }
   
+  private long getSumOfPrimes( long ceil ) {
+    long prime;
+    long sum = 0L;
+    PrimeSupplier ps = new PrimeSupplier();
+    while ( (prime = ps.getAsLong()) < ceil ) {
+      sum += prime;
+    }
+    return sum;
+  }
 }

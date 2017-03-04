@@ -16,7 +16,7 @@ import java.util.stream.LongStream;
  * @author Oliver
  */
 public class Solver11 extends LongSolver {
-  private static final Logger logger = getLogger(Solver11.class);
+  private final Logger logger = getLogger(getClass());
   
   private static final long[][] gridValues = {
     {  8,  2, 22, 97, 38, 15,  0, 40,  0, 75,  4,  5,  7, 78, 52, 12, 50, 77, 91,  8 }, 
@@ -84,7 +84,8 @@ public class Solver11 extends LongSolver {
   }
   
   private long getProduct( long col, long row, long dir ) {
-    return getNumbersFromGrid( col, row, dir ).reduce( 1, (left,right) -> left * right );
+    return getNumbersFromGrid( col, row, dir )
+            .reduce( 1, (left,right) -> left * right );
   }
   
   private LongStream getNumbersFromGrid( long col, long row, long dir ) {

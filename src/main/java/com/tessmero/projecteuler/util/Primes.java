@@ -7,7 +7,12 @@ import static org.slf4j.LoggerFactory.getLogger;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.LongSupplier;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 /**
  * Provides static convenience functions to test for primality and retrieve prime numbers.
@@ -16,6 +21,42 @@ import java.util.List;
  */
 public class Primes {
   private static final Logger logger = getLogger(Primes.class);
+  
+  public static LongStream getPrimesStream() { 
+    return LongStream.generate(new PrimeSupplier());
+  }
+  
+  public static class PrimeSupplier implements LongSupplier{
+
+    private final long[] primes = new long[1000000];
+    private int index = 0;
+
+    public PrimeSupplier() {
+      primes[0] = 2L;
+      primes[1] = 3L;
+    }
+    
+    @Override
+    public long getAsLong() {
+      
+      if ( primes[index] != 0 ) {
+        return primes[index++];
+      }
+      
+      long test = primes[index - 1] + 2;
+      for ( ;; test += 2 ) {
+        //logger.debug( format( "testing {0} for primality...", test ) );
+        for (long lowerPrime : primes) {
+          if ( lowerPrime == 0 ) {
+            primes[index++] = test;
+            return test;
+          } else if (test % lowerPrime == 0) {
+            break;
+          }
+        }
+      }
+    }
+  }
   
   /**
    * Compute a list of the primes below a certain value.
