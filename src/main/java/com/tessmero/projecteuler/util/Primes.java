@@ -7,12 +7,9 @@ import static org.slf4j.LoggerFactory.getLogger;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.LongSupplier;
 import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 /**
  * Provides static convenience functions to test for primality and retrieve prime numbers.
@@ -56,6 +53,26 @@ public class Primes {
         }
       }
     }
+  }
+  
+  /**
+   * Get a list of prime factors for the given number.
+   * 
+   * @param num the number to factorize
+   * @return a list of prime factors. may contain duplicates
+   */
+  public static List<Long> getPrimeFactors( long num ) {
+    PrimeSupplier ps = new PrimeSupplier();
+    long prime;
+    List<Long> result = new ArrayList();
+    long maxFactor = num / 2;
+    while ( num > 1 && (prime = ps.getAsLong()) <= maxFactor ) {
+      while ( num % prime == 0 ) {
+        result.add( prime );
+        num = num / prime;
+      }
+    }
+    return result;
   }
   
   /**
@@ -109,31 +126,6 @@ public class Primes {
       }
       if ( isPrime ) {
         result.add( test );
-      }
-    }
-    
-    return result;
-  }
-  
-  /**
-   * Compute the prime factors for a given number.
-   * 
-   * @param num the number to factorize
-   * @return a list of prime factors, some of which may repeat
-   */
-  public static List<Long> getPrimeFactors( long num ) {
-    List<Long> result = new ArrayList();
-    
-    if ( isPrime( num ) ) {
-      result.add( num );
-      return result;
-    }
-    long maxFactor = (long)sqrt( num ) + 1;
-    for ( long i = 2 ; i < maxFactor ; i++ ) {
-      if ( num % i == 0 && isPrime( i ) ) {
-        result.add( i );
-        result.addAll( getPrimeFactors( num / i ) );
-        return result;
       }
     }
     

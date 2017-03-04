@@ -6,8 +6,13 @@
 
 package com.tessmero.projecteuler.solvers.impl;
 
+import static com.tessmero.projecteuler.util.Primes.getPrimeFactors;
+import static java.text.MessageFormat.format;
+import static org.slf4j.LoggerFactory.getLogger;
+
 import com.tessmero.projecteuler.solvers.LongSolver;
 import com.tessmero.projecteuler.util.Primes.PrimeSupplier;
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,15 +26,16 @@ import java.util.stream.LongStream;
  * @author Oliver
  */
 public class Solver12 extends LongSolver{
+  private final Logger logger = getLogger(getClass());
 
   @Override
   public long doSolution() throws Exception {
-    return getTriangleNumber( 500 );
+    return getDivisibleTriangleNumber( 500 );
   }
 
   @Override
   public long doTest() throws Exception {
-    return getTriangleNumber( 5 );
+    return getDivisibleTriangleNumber( 5 );
   }
 
   @Override
@@ -37,29 +43,31 @@ public class Solver12 extends LongSolver{
     return 28;
   }
   
-  private long getTriangleNumber( int numDivisorsFloor ) {
+  private long getDivisibleTriangleNumber( int numDivisorsFloor ) {
     return triangleNumbers()
             .filter( num -> countDivisors( num ) > numDivisorsFloor )
             .findFirst().getAsLong();
   }
   
-  private int countDivisors( long num ) {
-    PrimeSupplier ps = new PrimeSupplier();
-    long prime;
-    long maxDivisor = num / 2;
-    List<Long> divisors = new ArrayList( Arrays.asList( 1L ) );
-    while ( (prime = ps.getAsLong()) <= maxDivisor ) {
-      for ( long primeMult = prime ; primeMult <= maxDivisor ; primeMult += prime ) {
-        if ( num % primeMult == 0 ) {
-          if ( !divisors.contains( primeMult ) ) {
-            divisors.add( primeMult );
-          }
-        } else {
-          break;
+  int countDivisors(long num) {
+    long limit = num;
+    int numberOfDivisors = 0;
+
+    if (num == 1) {
+      return 1;
+    }
+
+    for (int div = 1; div < limit; ++div) {
+      if (num % div == 0) {
+        limit = num / div;
+        if (limit != div) {
+          numberOfDivisors++;
         }
+        numberOfDivisors++;
       }
-    }    
-    return divisors.size() + 1;
+    }
+
+    return numberOfDivisors;
   }
   
   private LongStream triangleNumbers() {
