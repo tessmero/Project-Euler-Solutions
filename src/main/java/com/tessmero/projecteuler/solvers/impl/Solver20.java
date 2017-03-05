@@ -6,31 +6,31 @@
 
 package com.tessmero.projecteuler.solvers.impl;
 
-import static com.tessmero.projecteuler.util.BigInts.bigInt;
+import static com.tessmero.projecteuler.util.BigInts.factorial;
 import static com.tessmero.projecteuler.util.BigInts.getDigitSum;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
 
-
 /**
- * What is the sum of the digits of the number 2^1000.
+ * Find the sum of the digits in the number 100!.
  * 
  * @author Oliver
  */
-public class Solver16 extends LongSolver{
+public class Solver20 extends LongSolver{
 
   @Override
   public long doSolution() throws Exception {
-    return getDigitSum( bigInt( 2 ).pow( 1000 ) );
+    return getDigitSum( factorial( 100 ) );
   }
 
   @Override
   public long doTest() throws Exception {
-    return getDigitSum( bigInt( 2 ).pow( 15 ) );
+    return getDigitSum( factorial( 10 ) );
   }
 
   @Override
   public long getExpectedTestResult() {
-    return 26;
+    return 27;
   }
+  
 }
