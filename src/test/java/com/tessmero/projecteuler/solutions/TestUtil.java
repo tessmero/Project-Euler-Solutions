@@ -18,6 +18,7 @@ import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Provides a static convenience method for listing all implementations of
@@ -55,7 +56,15 @@ public class TestUtil {
         .peek(filename -> assertSolverSourceFilenameConventions( filename ) )
             
         //and get a problem number and solver instance for each file
-        .collect( toMap( name -> parseProblemNumber( name ), name -> getSolverInstance( name ) ) );
+        .collect( toMap( 
+            name -> parseProblemNumber( name ), 
+            name -> getSolverInstance( name ),
+            (v1,v2) -> { 
+              throw new RuntimeException(format(
+                    "Duplicate key for solvers {0} and {1}", v1, v2)); 
+            }, 
+            TreeMap::new ) 
+        );
     
     return result;
   }
