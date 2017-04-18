@@ -1,6 +1,6 @@
 package com.tessmero.projecteuler.solvers;
 
-import com.tessmero.projecteuler.solvers.impl.Solver22;
+import com.tessmero.projecteuler.solvers.impl.Solver25;
 
 /**
  * Interface that all problem-solvers inherit from.
@@ -17,7 +17,7 @@ public interface Solver {
    * @param args ignored
    */
   public static void main(String[] args) throws Exception {
-    Solver instance = new Solver22();
+    Solver instance = new Solver25();
     System.out.println( instance.doSolutionStr() );
   }
   

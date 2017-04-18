@@ -1,14 +1,16 @@
 package com.tessmero.projecteuler.util;
 
+import java.math.BigInteger;
+
 /**
  * Minimal Fibonacci sequence generator.
  * 
  * @author Oliver
  */
-public class Fibonacci {
+public class BigIntFibonacci {
   private int index = 2;
-  private long prevValue = 1;
-  private long currValue = 1;
+  private BigInteger prevValue = BigInteger.ONE;
+  private BigInteger currValue = BigInteger.ONE;
   
   /**
    * Get the value within the the Fibonacci sequence.
@@ -18,7 +20,7 @@ public class Fibonacci {
    * 
    * @return the current Fibonacci number.
    */
-  public long getValue() {
+  public BigInteger getValue() {
     return currValue;
   }
   
@@ -41,8 +43,8 @@ public class Fibonacci {
    */
   public void increment() {
     index++;
-    long temp = currValue;
-    currValue += prevValue;
+    BigInteger temp = currValue;
+    currValue = currValue.add( prevValue );
     prevValue = temp;
   }
 }
