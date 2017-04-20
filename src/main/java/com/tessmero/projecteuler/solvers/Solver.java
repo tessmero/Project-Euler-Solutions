@@ -1,6 +1,10 @@
 package com.tessmero.projecteuler.solvers;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import com.tessmero.projecteuler.solvers.impl.Solver26;
+
+import org.slf4j.Logger;
 
 /**
  * Interface that all problem-solvers inherit from.
@@ -18,7 +22,7 @@ public interface Solver {
    */
   public static void main(String[] args) throws Exception {
     Solver instance = new Solver26();
-    System.out.println( instance.doSolutionStr() );
+    getLogger( Solver.class ).info( "Solution: " + instance.doSolutionStr() );
   }
   
   /**
