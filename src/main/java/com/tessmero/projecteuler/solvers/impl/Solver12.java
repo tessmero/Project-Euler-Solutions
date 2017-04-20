@@ -9,6 +9,7 @@ package com.tessmero.projecteuler.solvers.impl;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
+
 import org.slf4j.Logger;
 
 import java.util.function.LongSupplier;

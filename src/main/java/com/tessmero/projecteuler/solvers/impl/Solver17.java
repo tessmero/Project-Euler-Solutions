@@ -12,6 +12,7 @@ import static java.util.stream.Collectors.toList;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
+
 import org.slf4j.Logger;
 
 import java.util.List;

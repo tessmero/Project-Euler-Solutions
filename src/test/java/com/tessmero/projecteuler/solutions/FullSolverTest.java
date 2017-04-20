@@ -6,15 +6,17 @@
 
 package com.tessmero.projecteuler.solutions;
 
-import static com.tessmero.projecteuler.solutions.TestUtil.getAllSolverImplementations;
 import static java.text.MessageFormat.format;
 import static org.junit.Assert.assertEquals;
 import static org.slf4j.LoggerFactory.getLogger;
+import static util.TestUtil.getAllSolverImplementations;
 
 import com.tessmero.projecteuler.solvers.Solver;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
+import org.springframework.test.annotation.IfProfileValue;
+import util.BaseTest;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -30,8 +32,8 @@ import java.util.Map;
  *
  * @author Oliver
  */
-@Ignore("slow, requires internet connection")
-public class FullSolverTest {
+@IfProfileValue(name = "test-profile", value = "FullSolutionTest")
+public class FullSolverTest extends BaseTest{
   private static final Logger logger = getLogger(FullSolverTest.class);
 
   private static final String correctSolutionsUrl 

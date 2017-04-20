@@ -1,13 +1,14 @@
 package com.tessmero.projecteuler.solutions;
 
-import static com.tessmero.projecteuler.solutions.TestUtil.getAllSolverImplementations;
 import static java.text.MessageFormat.format;
 import static org.junit.Assert.assertEquals;
 import static org.slf4j.LoggerFactory.getLogger;
+import static util.TestUtil.getAllSolverImplementations;
 
 import com.tessmero.projecteuler.solvers.Solver;
 import org.junit.Test;
 import org.slf4j.Logger;
+import util.BaseTest;
 
 import java.util.Map;
 
@@ -20,7 +21,7 @@ import java.util.Map;
  * 
  * @author Oliver Tessmer
  */
-public class FastSolverTest {
+public class FastSolverTest extends BaseTest{
   private static final Logger logger = getLogger(FastSolverTest.class);
   
   /**

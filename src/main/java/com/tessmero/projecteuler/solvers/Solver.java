@@ -4,8 +4,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.impl.Solver26;
 
-import org.slf4j.Logger;
-
 /**
  * Interface that all problem-solvers inherit from.
  * 

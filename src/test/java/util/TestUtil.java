@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.tessmero.projecteuler.solutions;
+package util;
 
 import static java.text.MessageFormat.format;
 import static java.util.stream.Collectors.toMap;
@@ -12,6 +12,7 @@ import static org.junit.Assert.fail;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.Solver;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -32,7 +33,7 @@ public class TestUtil {
   private static final String[] solverImplPackagePath 
           = { "com", "tessmero", "projecteuler", "solvers", "impl" };
   private static final String solverSourceDirPath 
-          = "../src/main/java/" + String.join( "/", solverImplPackagePath );
+          = "src/main/java/" + String.join( "/", solverImplPackagePath );
   
   /**
    * Get a list of instances for each implementation of

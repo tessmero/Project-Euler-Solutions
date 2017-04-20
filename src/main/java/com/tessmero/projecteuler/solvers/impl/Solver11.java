@@ -5,6 +5,7 @@ import static java.util.stream.LongStream.range;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
+
 import org.slf4j.Logger;
 
 import java.util.stream.LongStream;

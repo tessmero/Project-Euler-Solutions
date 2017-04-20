@@ -12,6 +12,7 @@ import static java.util.Calendar.DAY_OF_WEEK;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
+
 import org.slf4j.Logger;
 
 import java.util.Calendar;

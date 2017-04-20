@@ -8,14 +8,10 @@ package com.tessmero.projecteuler.solvers.impl;
 
 import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ROUND_DOWN;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
 
-import org.slf4j.Logger;
-
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 /**
  * Find the value of d less than 1000 for which 1/d contains the longest recurring cycle in its
