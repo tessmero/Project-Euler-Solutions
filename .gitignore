@@ -12,4 +12,5 @@
 hs_err_pid*
 /nbproject/
 /target/
+/build/
 /.nb-gradle/
