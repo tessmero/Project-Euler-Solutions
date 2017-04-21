@@ -11,22 +11,21 @@ import static com.tessmero.projecteuler.util.BigInts.getDigitSum;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
 
-
 /**
  * What is the sum of the digits of the number 2^1000.
- * 
+ *
  * @author Oliver
  */
-public class Solver16 extends LongSolver{
+public class Solver16 extends LongSolver {
 
   @Override
   public long doSolution() throws Exception {
-    return getDigitSum( bigInt( 2 ).pow( 1000 ) );
+    return getDigitSum(bigInt(2).pow(1000));
   }
 
   @Override
   public long doTest() throws Exception {
-    return getDigitSum( bigInt( 2 ).pow( 15 ) );
+    return getDigitSum(bigInt(2).pow(15));
   }
 
   @Override

@@ -10,7 +10,6 @@ import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ROUND_DOWN;
 
 import com.tessmero.projecteuler.solvers.LongSolver;
-
 import java.math.BigDecimal;
 
 /**
@@ -44,10 +43,10 @@ public class Solver26 extends LongSolver {
     int maxCycleLength = -1;
     int result = -1;
     for (int testD = 2; testD < ceil; testD++) {
-      
+
       BigDecimal bd = ONE.divide(new BigDecimal(testD), numDigitsToCheck, ROUND_DOWN);
       int cycleLength = getRecurringCycleLength(bd);
-      
+
       if (cycleLength > maxCycleLength) {
         maxCycleLength = cycleLength;
         result = testD;
@@ -58,7 +57,7 @@ public class Solver26 extends LongSolver {
 
   private int getRecurringCycleLength(BigDecimal num) {
     int[] digits = num.toString().chars().skip(2).map(ch -> ch - 48).toArray();
-    
+
     if (digits.length < numDigitsToCheck) {
       return 0;
     }

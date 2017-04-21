@@ -7,38 +7,38 @@
 package com.tessmero.projecteuler.solvers.impl;
 
 import com.tessmero.projecteuler.solvers.Solver;
-
 import java.math.BigInteger;
 
 /**
  * Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+ *
  * @author Oliver
  */
-public class Solver13 implements Solver{
+public class Solver13 implements Solver {
 
   @Override
   public String doSolutionStr() throws Exception {
-    return getSum( 100 ).substring( 0, 10 );
+    return getSum(100).substring(0, 10);
   }
 
   @Override
   public String doTestStr() throws Exception {
-    return getSum( 2 ).substring( 0, 10 );
+    return getSum(2).substring(0, 10);
   }
 
   @Override
   public String getExpectedTestResultStr() {
     return "8348422521";
   }
-  
-  private String getSum( int count ) {
+
+  private String getSum(int count) {
     BigInteger sum = BigInteger.ZERO;
-    for ( int i = 0 ; i < count ; i++ ) {
-      sum = sum.add( new BigInteger( numbers[i] ) );
+    for (int i = 0; i < count; i++) {
+      sum = sum.add(new BigInteger(numbers[i]));
     }
     return sum.toString();
   }
-  
+
   private static final String[] numbers = {
     "37107287533902102798797998220837590246510135740250",
     "46376937677490009712648124896970078050417018260538",
