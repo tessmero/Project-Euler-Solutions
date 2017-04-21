@@ -9,7 +9,7 @@ Clone repository, install dependencies, build and test.
 ```bash
 $ git clone [.git url]
 $ cd Project-Euler-Solutions-Java
-$ mvn clean install
+$ gradle build
 ```
 
 The command above will test each problem-solver quickly. The quick-test for each solver generally matches part of the problem's description on projecteuler.net.
@@ -17,7 +17,7 @@ The command above will test each problem-solver quickly. The quick-test for each
 The solvers can be fully tested by generating the solution to each problem and checking against an online resource. This requires a few minutes and an internet connection.
 
 ```bash
-$ mvn clean test -Dtest-profile=FullSolutionTest
+$  gradle cleanTest test -PFullSolutionTests
 ```
 
 ### Related Projects
