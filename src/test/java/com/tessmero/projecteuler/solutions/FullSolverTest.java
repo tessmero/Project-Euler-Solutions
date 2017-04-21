@@ -32,7 +32,7 @@ import java.util.Map;
  *
  * @author Oliver
  */
-@IfProfileValue(name = "test-profile", value = "FullSolutionTest")
+@IfProfileValue(name = "test-profile", value = "FullSolutionTests")
 public class FullSolverTest extends BaseTest{
   private static final Logger logger = getLogger(FullSolverTest.class);
 
