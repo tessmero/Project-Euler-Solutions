@@ -40,6 +40,7 @@ test {
         systemProperty "test-profile", "FullSolutionTests"
     }
     testLogging {
+        exceptionFormat = 'full'
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }
 }
