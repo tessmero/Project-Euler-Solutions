@@ -24,15 +24,6 @@ check.dependsOn verifyGoogleJavaFormat
 // to auto-format run ./gradlew googleJavaFormat
 // more info : https://github.com/sherter/google-java-format-gradle-plugin
 
-apply plugin: 'checkstyle'
-checkstyle {
-  toolVersion = "7.6.1"
-  // get the google_checks.xml file from the actual tool we're invoking
-  config = resources.text.fromArchiveEntry(configurations.checkstyle[0], 'google_checks.xml')
-  maxErrors = 0
-  maxWarnings = 0
-}
-
 group = 'com.mycompany'
 version = '1.0-SNAPSHOT'
 
